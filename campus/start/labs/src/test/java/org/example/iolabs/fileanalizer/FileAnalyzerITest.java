@@ -11,7 +11,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-class FileAnalyzerTest {
+class FileAnalyzerITest {
     private File fileWithTextContainWord;
     private File fileWithNotContainWord;
     private File emptyTFile;
@@ -22,7 +22,7 @@ class FileAnalyzerTest {
         fileWithTextContainWord = new File("testiolab", "TestTextFile");
         fileWithTextContainWord.createNewFile();
         FileOutputStream streamFileWithText = new FileOutputStream(fileWithTextContainWord);
-        streamFileWithText.write("Сегодня утром я вышел на улицу и там была большая дружелюбная собака. Она мчалась по аллее, за ней громко лаял маленький щенок! Какое забавное зрелище! Я радовался каждому их движению и остановке. Подумалось мне, что жизнь, в которой есть собака, была бы настоящим приключением. Вдруг собака остановилась, посмотрела на меня внимательно и кивнула гоовой. Я не мог отказать такой милой просьбе и пошел на прогулку с новыми друзьями. Весь день мы шли по парку, играли, бегали и наслаждались природой.".getBytes());
+        streamFileWithText.write("Сегодня утром я вышел на улицу и там была большая дружелюбная собака. Она мчалась по аллее, за ней громко лаял маленький щенок! Какое забавное зрелище! Я радовался каждому их движению и остановке. Подумалось мне, что жизнь, в которой есть собака, была бы настоящим приключением! Вдруг собака остановилась, посмотрела на меня внимательно и кивнула головой? Я не мог отказать такой милой просьбе и пошел бы на прогулку с новыми друзьями. Весь день мы бы шли по парку, играли, бегали и наслаждались природой.".getBytes());
         streamFileWithText.close();
         fileWithNotContainWord = new File("testiolab", "TestTextFile2");
         fileWithNotContainWord.createNewFile();
@@ -75,9 +75,9 @@ class FileAnalyzerTest {
         assertEquals(3, listOfNeededSentences.size());
         stream.close();
 
-        assertEquals("Сегодня утром я вышел на улицу и там была большая дружелюбная собака", listOfNeededSentences.get(0));
-        assertEquals(" Подумалось мне, что жизнь, в которой есть собака, была бы настоящим приключением", listOfNeededSentences.get(1));
-        assertEquals(" Вдруг собака остановилась, посмотрела на меня внимательно и кивнула гоовой", listOfNeededSentences.get(2));
+        assertEquals("Сегодня утром я вышел на улицу и там была большая дружелюбная собака.", listOfNeededSentences.get(0));
+        assertEquals(" Подумалось мне, что жизнь, в которой есть собака, была бы настоящим приключением!", listOfNeededSentences.get(1));
+        assertEquals(" Вдруг собака остановилась, посмотрела на меня внимательно и кивнула головой?", listOfNeededSentences.get(2));
 
     }
 

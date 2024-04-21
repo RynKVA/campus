@@ -7,13 +7,16 @@ public class FileManager {
         int countFiles = 0;
         File pathFile = new File(path);
         checkExistPath(pathFile, path);
-        if (pathFile.isDirectory()) {
-            for (File file : pathFile.listFiles()) {
-                if (file.isDirectory()) {
-                    String dirPath = file.getPath();
-                    countFiles += countFile(dirPath);
-                } else {
-                    countFiles++;
+        File[] files = pathFile.listFiles();
+        if (files != null) {
+            if (pathFile.isDirectory()) {
+                for (File file : files) {
+                    if (file.isDirectory()) {
+                        String dirPath = file.getPath();
+                        countFiles += countFile(dirPath);
+                    } else {
+                        countFiles++;
+                    }
                 }
             }
         }
@@ -24,14 +27,17 @@ public class FileManager {
         int countDirs = 0;
         File pathFile = new File(path);
         checkExistPath(pathFile, path);
-        if (pathFile.isDirectory()) {
-            for (File file : pathFile.listFiles()) {
-                if (file.isDirectory()) {
-                    String dirPath = file.getPath();
-                    countDirs += countDirs(dirPath);
-                    countDirs++;
-                } else {
+        File[] files = pathFile.listFiles();
+        if (files != null) {
+            if (pathFile.isDirectory()) {
+                for (File file : files) {
+                    if (file.isDirectory()) {
+                        String dirPath = file.getPath();
+                        countDirs += countDirs(dirPath);
+                        countDirs++;
+                    } else {
 
+                    }
                 }
             }
         }

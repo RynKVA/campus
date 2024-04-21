@@ -6,7 +6,7 @@ import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FileManagerTest {
+class FileManagerITest {
     private File textFile;
     private File textFile2;
     private File textFile3;

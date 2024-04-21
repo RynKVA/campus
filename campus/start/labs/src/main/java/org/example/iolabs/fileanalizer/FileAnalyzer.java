@@ -8,8 +8,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class FileAnalyzer {
+   private static final Pattern SENTENCE_PATTERN = Pattern.compile("((?<=[.!?]))");
     public static NeededContent fileAnalyzer() throws IOException {
         Scanner scanner = new Scanner(System.in);
         String path = scanner.nextLine();
@@ -43,15 +45,15 @@ public class FileAnalyzer {
 
 
     static ArrayList<String> divineOnNeededSentences(byte[] allBytes, String word) {
-        String str = new String(allBytes, StandardCharsets.UTF_8);
-        String[] split = str.split("[.!?]");
-        ArrayList<String> stringContainWord = new ArrayList<>();
+        String content = new String(allBytes, StandardCharsets.UTF_8);
+        String[] split = SENTENCE_PATTERN.split(content);
+        ArrayList<String> contentContainWord = new ArrayList<>();
         for (int i = 0; i < split.length; i++) {
             if (split[i].contains(word)) {
-                stringContainWord.add(split[i]);
+                contentContainWord.add(split[i]);
             }
         }
-        return stringContainWord;
+        return contentContainWord;
     }
 
     static void validatePathCorrectness(String path) {

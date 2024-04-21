@@ -20,6 +20,8 @@ public class EchoServer {
             StringBuilder builder = new StringBuilder(prefix);
             builder.append(message);
             outputStream.write(builder.toString().getBytes());
+            inputStream.close();
+            outputStream.close();
         }
     }
 }
